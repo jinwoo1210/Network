@@ -1,3 +1,4 @@
+using Photon.Pun;
 using TMPro;
 using UnityEngine;
 
@@ -11,7 +12,12 @@ public class LoginPanel : MonoBehaviour
     }
 
     public void Login()
-    {
-
+    {// 나 유저의 닉네임을 가지고 
+        if (idInputField.text == "")
+        {
+            Debug.LogError("Empty nickname : Please input Name");
+        }
+        PhotonNetwork.LocalPlayer.NickName = idInputField.text; 
+        PhotonNetwork.ConnectUsingSettings();
     }
 }
